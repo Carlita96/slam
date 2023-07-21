@@ -15,5 +15,10 @@ This project runs on Ubuntu 22.04. The steps for installing it are:
 
 ## Run example
 
-To run the example just run the following command:
+To run the example connecting to a Lidar L515 and visualizing the data, run the following command:
 `ros2 launch slam visualize_lidar_data.py`
+
+To run the example with recorded rosbag, run the following command:
+`ros2 launch slam visualize_rosbag_data.py rosbag_filepath:=<full path to rosbags DB3 file>`
+For example:
+`ros2 launch slam visualize_rosbag_data.py rosbag_filepath:=/home/user/path/to/file.db3`

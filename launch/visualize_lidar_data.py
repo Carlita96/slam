@@ -19,7 +19,7 @@ def generate_launch_description():
             namespace='',
             executable='rviz2',
             name='rviz2',
-            arguments=['-d' + os.path.join(pkg_share, 'config', 'config_file.rviz')]
+            arguments=['-d', os.path.join(pkg_share, 'config', 'config_file.rviz')]
         ),
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource([
