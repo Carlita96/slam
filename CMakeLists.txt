@@ -15,6 +15,7 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(gazebo_ros REQUIRED)
 
 # Add the executable targets
 add_executable(camera_slam_node src/camera_slam.cpp)
@@ -34,10 +35,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME})
 
 # Install the config and launch files in the share folder
-install(DIRECTORY config
-  DESTINATION share/${PROJECT_NAME})
-
-install(DIRECTORY launch
+install(DIRECTORY config launch urdf worlds models
   DESTINATION share/${PROJECT_NAME})
 
 # Make sure the headers are available to other ROS2 packages

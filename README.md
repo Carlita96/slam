@@ -9,6 +9,7 @@ This project runs on Ubuntu 22.04. The steps for installing it are:
 1. Install colcon by following this tutorial: [Colcon Installation](https://colcon.readthedocs.io/en/released/user/installation.html)
 1. Install the latest Intel Realsense SDK: `sudo apt install ros-humble-librealsense2*`
 1. Install the latest Intel Realsense ROS2 Wrapper: `sudo apt install ros-humble-realsense2-*`
+1. Install the Gazebo packages: `sudo apt install ros-humble-gazebo-ros-pkgs`
 1. Create a ROS2 workspace: `mkdir -p ~/ros2_ws/src`
 1. Clone this repository: `cd ~/ros2_ws/src && git clone https://github.com/Carlita96/slam.git`
 1. Build the workspace: `cd ~/ros2_ws && colcon build --symlink-install`

@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<sdf version='1.6'>
+  <world name='default'>
+    <gravity>0 0 0</gravity>
+
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.1</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <include>
+        <uri>model://concrete_floor</uri>
+        <pose>0 0 0 0 0 0</pose> <!-- Adjust the position (x, y, z) and orientation (roll, pitch, yaw) as needed -->
+    </include>
+
+    <population name="boxes">
+      <model name="boxes1">
+        <include>
+          <static>true</static>
+          <uri>model://wood_box</uri>
+        </include>
+      </model>
+      <pose>-13 0 2.5 0 0 0</pose>
+      <box>
+        <size>4.0 4.0 4.0</size>
+      </box>
+      <model_count>4</model_count>
+      <distribution>
+        <type>linear-z</type>
+      </distribution>
+    </population>
+  </world>
+</sdf>
