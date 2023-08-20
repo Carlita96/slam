@@ -16,6 +16,24 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(gazebo_ros REQUIRED)
+find_package(xacro REQUIRED)
+
+# Xacro
+file(GLOB xacro_files urdf/*.urdf.xacro)
+
+foreach(it ${xacro_files})
+  # remove .xacro extension
+  string(REGEX MATCH "(.*)[.]xacro$" unused ${it})
+  set(output_filename ${CMAKE_MATCH_1})
+
+  # create a rule to generate ${output_filename} from {it}
+  xacro_add_xacro_file(${it} ${output_filename})
+
+  list(APPEND urdf_files ${output_filename})
+endforeach(it)
+
+# add an abstract target to actually trigger the builds
+add_custom_target(media_files ALL DEPENDS ${urdf_files})
 
 # Add the executable targets
 add_executable(camera_slam_node src/camera_slam.cpp)
@@ -35,7 +53,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME})
 
 # Install the config and launch files in the share folder
-install(DIRECTORY config launch urdf worlds models
+install(DIRECTORY config launch urdf worlds
   DESTINATION share/${PROJECT_NAME})
 
 # Make sure the headers are available to other ROS2 packages

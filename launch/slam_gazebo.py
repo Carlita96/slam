@@ -23,12 +23,12 @@ def generate_launch_description():
     robot_description_path = os.path.join(
         pkg_share,
         'urdf',
-        'model.xml'
+        'robot.urdf'
     )
     world_file_path = os.path.join(
         pkg_share,
         'worlds',
-        'house.world'
+        'office.world'
     )
 
     # Declare the launch arguments
@@ -61,7 +61,7 @@ def generate_launch_description():
         package='gazebo_ros',
         executable='spawn_entity.py',
         arguments=['-entity', 'r2d2', '-file', urdf_file, '-robot_namespace', 
-                   'robot_namespace', '-x', '0', '-y', '0', '-z', '1'],
+                   'robot', '-x', '0', '-y', '0', '-z', '1'],
         output='screen'
     )
 
@@ -87,7 +87,7 @@ def generate_launch_description():
         namespace='',
         executable='rviz2',
         name='rviz2',
-        arguments=['-d', os.path.join(pkg_share, 'config', 'config_file.rviz')]
+        arguments=['-d', os.path.join(pkg_share, 'config', 'simulation_config.rviz')]
     )
 
 
@@ -119,7 +119,7 @@ def generate_launch_description():
             description='Path to the Gazebo world file'
         ),
         camera_slam_node,
-        # rviz_node,
+        rviz_node,
         gazebo_launch,
         spawn_entity,
         robot_state_publisher_node

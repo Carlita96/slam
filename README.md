@@ -9,6 +9,7 @@ This project runs on Ubuntu 22.04. The steps for installing it are:
 1. Install colcon by following this tutorial: [Colcon Installation](https://colcon.readthedocs.io/en/released/user/installation.html)
 1. Install the latest Intel Realsense SDK: `sudo apt install ros-humble-librealsense2*`
 1. Install the latest Intel Realsense ROS2 Wrapper: `sudo apt install ros-humble-realsense2-*`
+1. Install the package for teleoperating the robot `sudo apt install ros-eloquent-teleop-twist-keyboard`
 1. Install the Gazebo packages: `sudo apt install ros-humble-gazebo-ros-pkgs`
 1. Create a ROS2 workspace: `mkdir -p ~/ros2_ws/src`
 1. Clone this repository: `cd ~/ros2_ws/src && git clone https://github.com/Carlita96/slam.git`
@@ -23,3 +24,10 @@ To run the example with recorded rosbag, run the following command:
 `ros2 launch slam visualize_rosbag_data.py rosbag_filepath:=<full path to rosbags DB3 file>`
 For example:
 `ros2 launch slam visualize_rosbag_data.py rosbag_filepath:=/home/user/path/to/file.db3`
+
+## Run GAZEBO example
+
+To run the Gazebo example with a 2D ray sensor and a camera, run the following command:
+`ros2 launch slam slam_gazebo.py`
+To teleoperate the robot, run the following command:
+`ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r __ns:=/robot`
